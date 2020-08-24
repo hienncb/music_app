@@ -1,9 +1,3 @@
-/*
-Mr Nguyen Duc Hoang
-https://www.youtube.com/c/nguyenduchoang
-Email: sunlight4d@gmail.com
-Create some sagas for FETCH_MOVIES, FETCH_SUCCEEDED, FETCH_FAILED
-*/
 import { FETCH_MOVIES, FETCH_SUCCEEDED, FETCH_FAILED } from '../actions/actionTypes';
 //Saga effects
 import { put, takeLatest } from 'redux-saga/effects';
