@@ -13,12 +13,12 @@ const MainNavigation = () => {
             <Stack.Screen 
             name="List" 
             component={ListScreen}  
-            options={{ title: 'Danh sach nhac' }}/>
+            options={{ headerShown: null}}/>
         
             <Stack.Screen
             name="Home"
             component={MainScreen}
-            options={{ title: "Play music" }}
+            options={{ headerShown: null }}
             />
       </Stack.Navigator>
     </NavigationContainer>

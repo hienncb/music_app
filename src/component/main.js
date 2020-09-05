@@ -64,22 +64,9 @@ class MainContain extends React.Component{
         }
     }
 
-    play = async () => {
-        // console.log('@@@@@: ', this.props.route.params.href)
-        console.log(this.state.index)
-        // this.setState({
-        //     filepath: this.props.movies[this.state.index]
-        // })
-        // if(this.sound){
-        //     // this.sound.play(this.playComplete);
-        //     this.setState({playState:'playing'});
-        // }else{
-            // const filepath = 'https://data25.chiasenhac.com/downloads/2112/1/2111675-0f1457d9/128/Yeu%20Ai%20Yeu%20Ai%20De%20Khong%20Phai%20Khoc_%20-%20NB3.mp3';
-            // const filepath = this.props.route.params.href;
-            console.log('[Play]', this.props.movies[this.state.index]);
-    
+    play = async () => {    
             this.sound = new Sound(this.props.movies[this.state.index].href, '', (error) => {
-                if (error) {
+                if (error || !this.sound.getDuration()) {
                     console.log('failed to load the sound', error);
                     Alert.alert('Notice', 'audio file error. (Error code : 1)');
                     this.setState({playState:'paused'});
@@ -136,11 +123,11 @@ class MainContain extends React.Component{
     }
 
     getAudioTimeString(seconds){
-        const h = parseInt(seconds/(60*60));
+        // const h = parseInt(seconds/(60*60));
         const m = parseInt(seconds%(60*60)/60);
         const s = parseInt(seconds%60);
 
-        return ((h<10?'0'+h:h) + ':' + (m<10?'0'+m:m) + ':' + (s<10?'0'+s:s));
+        return ((m<10?'0'+m:m) + ':' + (s<10?'0'+s:s));
     }
 
     render(){
