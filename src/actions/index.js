@@ -1,9 +1,4 @@
-/*
-Mr Nguyen Duc Hoang
-https://www.youtube.com/c/nguyenduchoang
-Email: sunlight4d@gmail.com
-Redux in React Native - Action Creators
-*/
+
 import { ADD_MOVIE, FETCH_MOVIES, FETCH_SUCCEEDED, FETCH_FAILED } from './actionTypes';
 
 export const fetchMoviesAction = (sort) => {

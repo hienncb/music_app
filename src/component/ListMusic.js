@@ -1,18 +1,20 @@
 import React from 'react'
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { fetchMoviesAction } from '../actions';
+import { fetchMoviesAction, addMovieAction } from '../actions';
 import { Icon } from 'react-native-elements';
 
 class ListMusic extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            select: 0
+            select: 0, 
+            data:[]
         }
     }
     componentDidMount() {
         this.props.onFetchMovies();
+        // this.props.onCallYearMusic();
     }
     ClickToday = () => {
         this.setState({
@@ -29,16 +31,18 @@ class ListMusic extends React.Component {
         this.setState({
             select: 2
         })
+        this.props.onCallYearMusic();
     }
 
     render() {
+      
         return (
             <View style={{ flex: 1, backgroundColor: "#343a40" }}>
                 <View style={{ flexDirection: 'row', marginTop: 5, marginHorizontal: 10, justifyContent: 'space-between', paddingVertical: 10, marginBottom: 10 }}>
                     <TouchableOpacity>
                         <Icon name='menu' size={20} color="#517fa4" type='feather' />
                     </TouchableOpacity>
-                    <Icon name='library-music' size={30} color="#517fa4" type='FontAwesome' />
+                        <Icon name='library-music' size={30} color="#517fa4" type='FontAwesome' />
                     <TouchableOpacity>
                         <Icon name="search" size={20} color="#517fa4" type='Feather' />
                     </TouchableOpacity>
@@ -65,7 +69,7 @@ class ListMusic extends React.Component {
                             }>
                                 <View style={{ flexDirection: 'row', margin: 9 }}>
                                     <Image
-                                        source={{ uri: 'https://picsum.photos/200' }}
+                                        source={{ uri: item.img }}
                                         style={{ width: 60, height: 60 }}
                                     />
                                     <Text numberOfLines={2}
@@ -76,7 +80,7 @@ class ListMusic extends React.Component {
 
                                         }}
                                     >
-                                        {`${item.title}`}
+                                        {item.title}
                                     </Text>
                                     <Icon name='play-circle-outline' size={30} color="#517fa4" type='FontAwesome' />
                                 </View>
@@ -100,6 +104,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onFetchMovies: () => {
             dispatch(fetchMoviesAction());
+        },
+        onCallYearMusic: () => {
+            dispatch(addMovieAction());
         }
     };
 }

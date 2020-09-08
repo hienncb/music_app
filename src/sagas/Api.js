@@ -1,20 +1,29 @@
-const urlGetMovies = 'https://nets-play-music.herokuapp.com/music/today_music';
+import callApi from "./ApiCaller";
 
-function* getMoviesFromApi() {
+// const url = 'https://nets-play-music.herokuapp.com/music/';
+const url_today = 'http://192.168.1.4:3000/music/today_music';
+const url_year = 'http://192.168.1.4:3000/music/year_music';
+
+
+function* getTodayMusics(){
     var data = [];
-    const response = yield fetch(urlGetMovies, {
-        method: 'GET',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: '',
-    }).then((response) => response.json())
-    .then((responseJson) => {
-        data = responseJson.today.fulfillmentValue;
+    yield callApi(url_today, 'GET',{data:null}).then(res =>{
+        data = res.data.today.fulfillmentValue;
     })
-  return data;
+    return data;
 }
+
+function* getYearMusics(){
+    // console.log("@@@@@@@@@@@@@@@@@@@@@@@@")
+    var data = [];
+    yield callApi(url_year, 'GET',{data:null}).then(res =>{
+        // console.log('@@@@@@@@@@@@@@@@@@@@@', res.data.year.fulfillmentValue);
+         data = res.data.year.fulfillmentValue;
+    })
+    return data;
+}
+
 export const Api = {
-    getMoviesFromApi
+    getTodayMusics,
+    getYearMusics
 }; 
