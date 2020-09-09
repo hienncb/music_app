@@ -1,8 +1,8 @@
 import callApi from "./ApiCaller";
 
 // const url = 'https://nets-play-music.herokuapp.com/music/';
-const url_today = 'http://192.168.1.4:3000/music/today_music';
-const url_year = 'http://192.168.1.4:3000/music/year_music';
+const url_today = 'http://192.168.1.2:3000/music/today_music';
+const url_year = 'http://192.168.1.2:3000/music/year_music';
 
 
 function* getTodayMusics(){

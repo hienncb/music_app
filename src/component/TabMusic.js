@@ -5,12 +5,6 @@ import Sound from 'react-native-sound';
 // import {Slider} from '@react-native-community/slider'
 import { fetchMoviesAction, addMovieAction } from '../actions';
 
-const img_speaker = require('../resources/ui_speaker.png');
-const img_pause = require('../resources/ui_pause.png');
-const img_play = require('../resources/ui_play.png');
-const img_playjumpleft = require('../resources/ui_playjumpleft.png');
-const img_playjumpright = require('../resources/ui_playjumpright.png');
-
 class MainContain extends React.Component{
 
     static navigationOptions = props => ({
@@ -93,7 +87,7 @@ class MainContain extends React.Component{
     render(){
         return (
             <View style={{flex:1, justifyContent:'center', backgroundColor:'black'}}>
-                <View style={{flexDirection:'row', justifyContent:'center', marginVertical:15}}>                  
+                {/* <View style={{flexDirection:'row', justifyContent:'center', marginVertical:15}}>                  
                     {this.state.playState == 'playing' && 
                     <TouchableOpacity onPress={this.pause} style={{marginHorizontal:20}}>
                         <Image source={img_pause} style={{width:30, height:30}}/>
@@ -102,7 +96,7 @@ class MainContain extends React.Component{
                     <TouchableOpacity onPress={this.play} style={{marginHorizontal:20}}>
                         <Image source={img_play} style={{width:30, height:30}}/>
                     </TouchableOpacity>}
-                </View>
+                </View> */}
             </View>
         )
     }
@@ -120,10 +114,6 @@ const mapDispatchToProps = (dispatch) => {
         onFetchMovies: () => {                        
             dispatch(fetchMoviesAction());
         }, 
-        //Not necessary !   
-        // onSuccessFetch: () => {                        
-        //     dispatch(fetchSuccessAction());
-        // }, 
         onAddMovie: (newMovie) => {                        
             dispatch(addMovieAction(newMovie));
         }
