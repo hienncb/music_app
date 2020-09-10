@@ -58,7 +58,7 @@ class ListMusic extends React.Component {
                         <Text style={{ color: 'white', fontWeight: (this.state.select == 2) ? 'bold' : 'normal' }}> Năm </Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{ marginTop: -80, marginHorizontal: 20, flex: 1, backgroundColor: '#23282c', borderTopLeftRadius: 7, borderTopRightRadius: 7 }}>
+                <View style={{marginTop: -80, marginHorizontal: 20, flex: 1, backgroundColor: '#23282c', borderTopLeftRadius: 7, borderTopRightRadius: 7 }}>
                     <FlatList
                         data={this.props.movies}
                         keyExtractor={(item) => item.href}
@@ -80,7 +80,7 @@ class ListMusic extends React.Component {
 
                                         }}
                                     >
-                                        {item.title}
+                                        {item.title.slice(4)}
                                     </Text>
                                     <Icon name='play-circle-outline' size={30} color="#517fa4" type='FontAwesome' />
                                 </View>
